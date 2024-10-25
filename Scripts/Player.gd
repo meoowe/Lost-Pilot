@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var Actions: int = 2
-var speed: float = 200.0 # Speed of the player
+@export var speed: float = 200.0 # Speed of the player
 var path = [] # Array to hold the calculated path
 var path_index: int = 0 # Current index in the path
 var moving: bool = false # Movement flag
