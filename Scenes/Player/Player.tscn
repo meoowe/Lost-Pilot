@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkkdcx534ran6"]
+[gd_scene load_steps=4 format=3 uid="uid://dkkdcx534ran6"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_4kof2"]
 [ext_resource type="Texture2D" uid="uid://b05hj6ognkfqi" path="res://icon.svg" id="2_pi6i1"]
+[ext_resource type="Script" path="res://Scripts/InteractionSystem/InteractionManager.gd" id="3_s0tr7"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Player" type="Node2D"]
 script = ExtResource("1_4kof2")
+Actions = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_pi6i1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
+
+[node name="Modules" type="Node2D" parent="."]
+
+[node name="InteractionManager" type="Node2D" parent="Modules"]
+script = ExtResource("3_s0tr7")

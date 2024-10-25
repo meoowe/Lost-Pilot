@@ -1,11 +1,12 @@
 extends Node2D
 
-var Actions: int = 2
+@export var Actions: int = 2
 var speed: float = 200.0 # Speed of the player
 var path = [] # Array to hold the calculated path
 var path_index: int = 0 # Current index in the path
 var moving: bool = false # Movement flag
 var highlight_path: PackedVector2Array
+
 func _ready() -> void:
 	global.pathfinder = AStarGrid2D.new()
 	global.map = get_parent().get_parent().get_child(0) # Adjust this as needed for clarity
