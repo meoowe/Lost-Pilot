@@ -33,33 +33,16 @@ var highlight_path: PackedVector2Array = []
 
 ## Reference to the interactable object currently selected by the player
 var selected_object: InteractableObj
-
-## Called when the node is added to the scene
 func _ready() -> void:
-	# Initialize global player and pathfinder variables
+	# Initialize global player
 	global.player = self
-	global.pathfinder = AStarGrid2D.new()
-	global.map = get_parent().get_parent().get_child(0)
-	
-	# Set the pathfinder's region and cell size
-	global.pathfinder.region = global.map.get_used_rect()
-	global.pathfinder.cell_size = Vector2.ONE * 128
-	global.pathfinder.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	global.pathfinder.update()
-
-	# Mark solid points in the pathfinder based on tile data
-	for pos in global.map.get_used_cells():
-		if global.map.get_cell_tile_data(pos).get_custom_data("Col") == 0:
-			global.pathfinder.set_point_solid(pos)
 
 ## Handles unhandled input events, such as mouse clicks
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		# Get the cell position based on mouse click location
-		var cell_position = global.map.local_to_map(get_global_mouse_position())
-		if cell_position in global.map.get_used_cells() and global.map.get_cell_tile_data(cell_position).get_custom_data("Col") == 1:
-			# Calculate and highlight the path to the clicked position
-			highlight_path = global.calculate_path(position, get_global_mouse_position())
+		if global.in_map(get_global_mouse_position())\
+		 and global.map.get_cell_tile_data(global.map.local_to_map(get_global_mouse_position())).get_custom_data("Col") == 1:
 			# Only set path if it is valid and within action limits
 			if highlight_path.size() - 1 <= Actions:
 				path = highlight_path 
@@ -67,9 +50,11 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if pc:
 		# Continuously update highlight path for player character
-		highlight_path = global.calculate_path(position, get_global_mouse_position())
+		if global.in_map(get_global_mouse_position()):
+			highlight_path = global.calculate_path(position, get_global_mouse_position())
 		_process_path_following(delta) # Move along the path
-		_update_highlight_path() # Update visual highlights
+		if pc and highlight_path.size() > 0:
+			queue_redraw() # Schedule the draw function to update the highlights
 	else:
 		_process_tile_movement(delta) # Handle movement for non-player characters
 
@@ -86,17 +71,8 @@ func _process_path_following(delta: float) -> void:
 			position = target_position
 			path_index += 1 # Move to the next point in the path
 	else:
-		_reset_path() # Reset path if end of path is reached
-
-## Resets the path and index when movement is complete
-func _reset_path() -> void:
-	path.clear() # Clear the path array
-	path_index = 0 # Reset index to start
-
-## Updates the visual highlights of the path
-func _update_highlight_path() -> void:
-	if pc and highlight_path.size() > 0:
-		queue_redraw() # Schedule the draw function to update the highlights
+		path.clear() # Clear the path array
+		path_index = 0 # Reset index to start
 
 ## Handles movement based on tile grid for non-player characters
 func _process_tile_movement(delta: float) -> void:

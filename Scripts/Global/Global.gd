@@ -21,3 +21,6 @@ func calculate_path(start: Vector2, end: Vector2, tf: bool = true) -> PackedVect
 		map.local_to_map(end),
 		tf
 	)
+
+func in_map(cell: Vector2i):
+	return map.local_to_map(cell) in map.get_used_cells()
