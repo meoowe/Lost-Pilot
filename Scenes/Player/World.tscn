@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=4 uid="uid://cjxiwvvqhuh0q"]
 
 [ext_resource type="PackedScene" uid="uid://dkkdcx534ran6" path="res://Scenes/Player/Player.tscn" id="1_1vo14"]
-[ext_resource type="Texture2D" uid="uid://b05hj6ognkfqi" path="res://icon.svg" id="2_2nh4u"]
-[ext_resource type="PackedScene" uid="uid://didh1mtde07hl" path="res://Objects/Interactable_door/door.tscn" id="3_yy6hg"]
+[ext_resource type="Texture2D" uid="uid://b05hj6ognkfqi" path="res://Assets/icon.svg" id="2_2nh4u"]
+[ext_resource type="PackedScene" uid="uid://didh1mtde07hl" path="res://Scenes/door.tscn" id="3_yy6hg"]
 [ext_resource type="Script" path="res://Scenes/Player/MapGenerator.gd" id="4_78f4u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4fw4l"]
