@@ -5,6 +5,7 @@ class_name LightManager
 @export var tile_layer : TileMapLayer
 @export var tile_size : int = 64
 
+@export var darkness : float = 0.75
 @export var max_light_radius: int = 6
 @export var light_falloff: float = 0.1
 
@@ -34,7 +35,7 @@ func _physics_process(delta: float) -> void:
 
 func generate_shadow_data() -> void:
 	for tile in tile_layer.get_used_cells():
-		shadow_data[tile] = 1.0
+		shadow_data[tile] = darkness
 
 func instance_shadows() -> void:
 	for shadow in shadow_data:
@@ -60,7 +61,7 @@ func set_tile_light_level(tile_position : Vector2i,light_level : float = 1) -> v
 func clear_light_map() -> void:
 	print("Clearing light map")
 	for tile in shadow_data:
-		shadow_data[tile] = 1.0
+		shadow_data[tile] = darkness
 	
 	for shadow_tile in shadow_scenes:
 		shadow_scenes[shadow_tile].set_modulate(Color(1,1,1,shadow_data[shadow_tile]))
@@ -70,8 +71,8 @@ func update_light_map() -> void:
 	print("Updated light map")
 	var player_pos : Vector2i = global.player.position / tile_size
 	
-	for y in range(player_pos.x - max_light_radius, player_pos.x + max_light_radius + 1):
-		for x in range(player_pos.y - max_light_radius, player_pos.y + max_light_radius + 1):
+	for x in range(player_pos.x - max_light_radius, player_pos.x + max_light_radius + 1):
+		for y in range(player_pos.y - max_light_radius, player_pos.y + max_light_radius + 1):
 			var tile_position = Vector2i(x, y)
 			
 			# if the tile position is not valid we continue
@@ -80,16 +81,12 @@ func update_light_map() -> void:
 			# check the distance of the tile to create a fall off value
 			var distance : float = player_pos.distance_to(tile_position)
 			
-			# if the tile is the same as the player it should be full brightness
-			if tile_position == player_pos:
-				set_tile_light_level(tile_position,0)
-				continue
 			
 			if distance <= max_light_radius:
 				# This needs to be replaced with checking boundaries function so we cant see
 				# past walls.
 				if true:
-					var light_level = clamp(1.0 - (distance * light_falloff), 0.0, 1.0)
+					var light_level = clamp((distance * light_falloff) - 1.0, 0.0, 1.0)
 					set_tile_light_level(tile_position,light_level)
 				else:
 					set_tile_light_level(tile_position)
