@@ -1,129 +1,162 @@
-[gd_scene load_steps=20 format=3 uid="uid://didh1mtde07hl"]
+[gd_scene load_steps=13 format=3 uid="uid://didh1mtde07hl"]
 
 [ext_resource type="Script" path="res://Scripts/InteractionSystem/Door.gd" id="1_uxbyn"]
 [ext_resource type="Texture2D" uid="uid://b1y70ybs2m3ad" path="res://Assets/DoorSpriteSheet.png" id="2_hov0a"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y6b7b"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="Animation" id="Animation_4dkv7"]
+resource_name = "Open"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LightOccluder2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightOccluder2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -64), Vector2(0, -128)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 64)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3upl6"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(128, 0, 128, 128)
+[sub_resource type="Animation" id="Animation_p2lu3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LightOccluder2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightOccluder2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -64)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cnof7"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(256, 0, 128, 128)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n545v"]
+_data = {
+"Open": SubResource("Animation_4dkv7"),
+"RESET": SubResource("Animation_p2lu3")
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1g0m1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqqwg"]
 atlas = ExtResource("2_hov0a")
-region = Rect2(384, 0, 128, 128)
+region = Rect2(42, 0, 42, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ta3hd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrxtk"]
 atlas = ExtResource("2_hov0a")
-region = Rect2(512, 0, 128, 128)
+region = Rect2(42, 64, 42, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2n0kn"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(640, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q44v1"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(768, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tkmtl"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(896, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ij55f"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(1024, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qrqyv"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(1152, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_84imm"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(1280, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y8fr4"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(1408, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hs526"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(1536, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_06g7w"]
-atlas = ExtResource("2_hov0a")
-region = Rect2(1664, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_plsfi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y6b7b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3upl6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cnof7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1g0m1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ta3hd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2n0kn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q44v1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tkmtl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ij55f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qrqyv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_84imm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y8fr4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hs526")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_06g7w")
-}],
-"loop": false,
-"name": &"open",
-"speed": 13.0
-}]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7v8n4"]
+light_mode = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bg86f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqc6g"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eb3qg"]
+polygon = PackedVector2Array(-18, -64, -18, 0, 18, 0, 18, -64)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lx71f"]
+polygon = PackedVector2Array(-18, 64, -18, 0, 18, 0, 18, 64)
+
 [node name="InteractableDoor" type="Node2D" node_paths=PackedStringArray("anim", "GUI")]
 script = ExtResource("1_uxbyn")
-anim = NodePath("AnimatedSprite2D")
+anim = NodePath("AnimationPlayer")
 GUI = NodePath("Button")
 detection_radius = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_plsfi")
-animation = &"open"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n545v")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = SubResource("AtlasTexture_pqqwg")
+centered = false
+offset = Vector2(-21, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_wrxtk")
+centered = false
+offset = Vector2(-21, 0)
 
 [node name="Button" type="Button" parent="."]
+material = SubResource("CanvasItemMaterial_7v8n4")
 offset_left = -64.0
 offset_top = -64.0
 offset_right = 64.0
@@ -142,6 +175,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_bg86f")
 alignment = 0
 
 [node name="Label" type="Label" parent="Button"]
+use_parent_material = true
 layout_mode = 0
 offset_left = -198.0
 offset_top = 1.0
@@ -152,5 +186,11 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_qqc6g")
 text = "Press: Enter
 or click on door"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_eb3qg")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_lx71f")
 
 [connection signal="pressed" from="Button" to="." method="interact"]
