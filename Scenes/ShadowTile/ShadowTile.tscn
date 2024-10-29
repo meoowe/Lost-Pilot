@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://urues7oyj7ud"]
+
+[ext_resource type="Texture2D" uid="uid://vkmpgf5vu73u" path="res://Scenes/ShadowTile/shadow.png" id="1_prvdx"]
+
+[node name="ShadowTile" type="Sprite2D"]
+self_modulate = Color(1, 1, 0, 1)
+texture = ExtResource("1_prvdx")
