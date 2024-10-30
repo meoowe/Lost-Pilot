@@ -43,8 +43,5 @@ tile_set = SubResource("TileSet_4raql")
 script = ExtResource("5_mt8g8")
 tile_layer = NodePath("../Floor")
 tile_size = 128
-darkness = 0.8
-min_light_radius = 5
-max_light_radius = 5
 
 [node name="Container" type="Node2D" parent="LightManager"]

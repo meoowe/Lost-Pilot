@@ -19,8 +19,8 @@ func _ready() -> void:
 	# not sure why but the container needs to be offset for the tiles to be aligned.
 	generate_shadow_data()
 	await get_tree().create_timer(0.1).timeout
-	global.player.reached_next_cell.connect(update_light_map)
-	update_light_map()
+	global.player.moved.connect(update_light_map)
+	update_light_map(Vector2i.ZERO)
 	set_physics_process(true)
 
 func _draw() -> void:
@@ -52,7 +52,7 @@ func clear_light_map() -> void:
 		shadow_data[tile] = darkness
 	queue_redraw()
 
-func update_light_map() -> void:
+func update_light_map(_n:Vector2i) -> void:
 	clear_light_map()
 	
 	var player_pos : Vector2i = tile_layer.local_to_map(global.player.position)

@@ -1,25 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkkdcx534ran6"]
+[gd_scene load_steps=3 format=3 uid="uid://dkkdcx534ran6"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_4kof2"]
 [ext_resource type="Texture2D" uid="uid://b05hj6ognkfqi" path="res://Assets/icon.svg" id="2_pi6i1"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gtelk"]
-light_mode = 1
-
-[sub_resource type="Gradient" id="Gradient_gon20"]
-colors = PackedColorArray(0.721569, 0.721569, 0.721569, 0.768627, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3rcgi"]
-gradient = SubResource("Gradient_gon20")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 1)
-
 [node name="Player" type="Node2D"]
-top_level = true
-material = SubResource("CanvasItemMaterial_gtelk")
+z_index = 1
 script = ExtResource("1_4kof2")
 Actions = 8
 speed = 400.0
@@ -28,11 +13,5 @@ speed = 400.0
 texture = ExtResource("2_pi6i1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.6, 0.6)
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 2.1
-blend_mode = 2
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_3rcgi")
-texture_scale = 7.0
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
