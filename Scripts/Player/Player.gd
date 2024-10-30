@@ -1,6 +1,8 @@
 extends Node2D
 class_name PlayerNode
 
+signal reached_next_cell
+
 ## Number of actions the player can take in a single turn
 @export var Actions: int = 2
 
@@ -68,6 +70,7 @@ func _process_path_following(delta: float) -> void:
 
 		# Check if the player has reached the target position
 		if position.distance_to(target_position) < speed * delta:
+			reached_next_cell.emit()
 			position = target_position
 			path_index += 1 # Move to the next point in the path
 	else:

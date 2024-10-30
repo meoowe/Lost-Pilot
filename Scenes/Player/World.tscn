@@ -44,6 +44,7 @@ script = ExtResource("5_mt8g8")
 tile_layer = NodePath("../Floor")
 tile_size = 128
 darkness = 0.8
+max_light_radius = 10
 shadow_container = NodePath("Container")
 
 [node name="Container" type="Node2D" parent="LightManager"]

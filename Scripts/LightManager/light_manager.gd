@@ -6,6 +6,7 @@ class_name LightManager
 @export var tile_size : int = 64
 
 @export var darkness : float = 0.75
+@export var min_light_radius : int = 2
 @export var max_light_radius: int = 6
 @export var light_falloff: float = 0.1
 
@@ -26,12 +27,10 @@ func _ready() -> void:
 	generate_shadow_data()
 	instance_shadows()
 	await get_tree().create_timer(0.1).timeout
+	global.player.reached_next_cell.connect(update_light_map)
+	update_light_map()
 	set_physics_process(true)
 
-func _physics_process(delta: float) -> void:
-	if current_player_pos != global.player.position:
-		update_light_map()
-		current_player_pos = global.player.position
 
 func generate_shadow_data() -> void:
 	for tile in tile_layer.get_used_cells():
@@ -50,16 +49,16 @@ func tile_exists(tile_pos : Vector2i) -> bool:
 	var check : bool = shadow_data.has(tile_pos)
 	return check
 
-func set_tile_light_level(tile_position : Vector2i,light_level : float = 1) -> void:
+func set_tile_light_level(tile_position : Vector2i,light_level : float = darkness) -> void:
+	if light_level > darkness:
+		light_level = darkness
 	# Update the light level dict
 	shadow_data[tile_position] = light_level
 	# then apply the update to the scene
 	shadow_scenes[tile_position].set_modulate(Color(1,1,1,shadow_data[tile_position]))
-	# = shadow_data[tile_position]
 
 # Function for setting light level to black
 func clear_light_map() -> void:
-	print("Clearing light map")
 	for tile in shadow_data:
 		shadow_data[tile] = darkness
 	
@@ -68,8 +67,9 @@ func clear_light_map() -> void:
 
 func update_light_map() -> void:
 	clear_light_map()
-	print("Updated light map")
-	var player_pos : Vector2i = global.player.position / tile_size
+	
+	var player_pos : Vector2i = tile_layer.local_to_map(global.player.position)
+	#var player_pos : Vector2i = global.player.position / tile_size
 	
 	for x in range(player_pos.x - max_light_radius, player_pos.x + max_light_radius + 1):
 		for y in range(player_pos.y - max_light_radius, player_pos.y + max_light_radius + 1):
@@ -86,7 +86,14 @@ func update_light_map() -> void:
 				# This needs to be replaced with checking boundaries function so we cant see
 				# past walls.
 				if true:
-					var light_level = clamp((distance * light_falloff) - 1.0, 0.0, 1.0)
+					var light_level : float = calculate_light_level(distance,min_light_radius,max_light_radius)
 					set_tile_light_level(tile_position,light_level)
 				else:
 					set_tile_light_level(tile_position)
+
+func calculate_light_level(distance: float, min_distance: float, max_distance: float) -> float:
+	var clamped_distance = clamp(distance, min_distance, max_distance)
+	
+	var scaled = (clamped_distance - min_distance) / (max_distance - min_distance)
+	
+	return scaled
