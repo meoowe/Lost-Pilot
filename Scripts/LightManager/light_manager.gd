@@ -1,7 +1,6 @@
 extends Node2D
 class_name LightManager
 
-@onready var shadow_tile : PackedScene = preload("res://Scenes/ShadowTile/ShadowTile.tscn")
 @export var tile_layer : TileMapLayer
 @export var tile_size : int = 64
 
@@ -10,41 +9,32 @@ class_name LightManager
 @export var max_light_radius: int = 6
 @export var light_falloff: float = 0.1
 
-# Not sure why but the container needs to be offset to align with the tilemap
-@export var shadow_container : Node2D
-
 # Holds light levels
 var shadow_data : Dictionary
-# Holds the scenes
-var shadow_scenes : Dictionary
 
 var current_player_pos : Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	set_physics_process(false)
 	# not sure why but the container needs to be offset for the tiles to be aligned.
-	shadow_container.position = Vector2(tile_size * 0.5,tile_size * 0.5)
 	generate_shadow_data()
-	instance_shadows()
 	await get_tree().create_timer(0.1).timeout
 	global.player.reached_next_cell.connect(update_light_map)
 	update_light_map()
 	set_physics_process(true)
 
+func _draw() -> void:
+	for shadow in shadow_data:
+		var offset_pos : Vector2 = shadow * tile_size
+		var size : Vector2 = Vector2(tile_size,tile_size)
+		var colour : Color = Color(0,0,0,shadow_data[shadow])
+		
+		draw_rect(Rect2(offset_pos,size),colour)
 
 func generate_shadow_data() -> void:
 	for tile in tile_layer.get_used_cells():
 		shadow_data[tile] = darkness
-
-func instance_shadows() -> void:
-	for shadow in shadow_data:
-		var offset_pos : Vector2 = shadow * tile_size
-		var _shadow_scene : Sprite2D = shadow_tile.instantiate()
-		
-		shadow_container.add_child(_shadow_scene)
-		_shadow_scene.position = offset_pos
-		shadow_scenes[shadow] = _shadow_scene
-		
+	
 func tile_exists(tile_pos : Vector2i) -> bool:
 	var check : bool = shadow_data.has(tile_pos)
 	return check
@@ -55,21 +45,17 @@ func set_tile_light_level(tile_position : Vector2i,light_level : float = darknes
 	# Update the light level dict
 	shadow_data[tile_position] = light_level
 	# then apply the update to the scene
-	shadow_scenes[tile_position].set_modulate(Color(1,1,1,shadow_data[tile_position]))
 
 # Function for setting light level to black
 func clear_light_map() -> void:
 	for tile in shadow_data:
 		shadow_data[tile] = darkness
-	
-	for shadow_tile in shadow_scenes:
-		shadow_scenes[shadow_tile].set_modulate(Color(1,1,1,shadow_data[shadow_tile]))
+	queue_redraw()
 
 func update_light_map() -> void:
 	clear_light_map()
 	
 	var player_pos : Vector2i = tile_layer.local_to_map(global.player.position)
-	#var player_pos : Vector2i = global.player.position / tile_size
 	
 	for x in range(player_pos.x - max_light_radius, player_pos.x + max_light_radius + 1):
 		for y in range(player_pos.y - max_light_radius, player_pos.y + max_light_radius + 1):
@@ -81,7 +67,6 @@ func update_light_map() -> void:
 			# check the distance of the tile to create a fall off value
 			var distance : float = player_pos.distance_to(tile_position)
 			
-			
 			if distance <= max_light_radius:
 				# This needs to be replaced with checking boundaries function so we cant see
 				# past walls.
@@ -90,7 +75,9 @@ func update_light_map() -> void:
 					set_tile_light_level(tile_position,light_level)
 				else:
 					set_tile_light_level(tile_position)
-
+	
+	queue_redraw()
+	
 func calculate_light_level(distance: float, min_distance: float, max_distance: float) -> float:
 	var clamped_distance = clamp(distance, min_distance, max_distance)
 	

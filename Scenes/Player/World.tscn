@@ -39,12 +39,12 @@ script = ExtResource("4_78f4u")
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAQABAAAAAQAAAAAAAQACAAAAAAAAAAAAAQADAAEAAAAAAAAAAQACAAEAAAAAAAAAAQACAAIAAAAAAAAAAQABAAIAAAAAAAAAAQAAAAIAAAAAAAAAAQAAAAEAAAAAAAAAAQABAAEAAAAAAAAAAQADAAAAAAAAAAAAAQADAAIAAAAAAAAAAQAGAAIAAQAAAAAAAgAKAAEAAQAAAAAAAgAMAAEAAQAAAAAAAgA=")
 tile_set = SubResource("TileSet_4raql")
 
-[node name="LightManager" type="Node2D" parent="." node_paths=PackedStringArray("tile_layer", "shadow_container")]
+[node name="LightManager" type="Node2D" parent="." node_paths=PackedStringArray("tile_layer")]
 script = ExtResource("5_mt8g8")
 tile_layer = NodePath("../Floor")
 tile_size = 128
 darkness = 0.8
-max_light_radius = 10
-shadow_container = NodePath("Container")
+min_light_radius = 5
+max_light_radius = 5
 
 [node name="Container" type="Node2D" parent="LightManager"]
