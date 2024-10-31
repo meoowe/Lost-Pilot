@@ -7,7 +7,6 @@ class_name LightManager
 @export var darkness : float = 0.75
 @export var min_light_radius : int = 2
 @export var max_light_radius: int = 6
-@export var light_falloff: float = 0.1
 
 # Holds light levels
 var shadow_data : Dictionary
