@@ -21,6 +21,7 @@ var default_zoom: Vector2
 signal moved(position: Vector2i)            ## Signal emitted when the player's turn ends
 
 # --- Built-in Callbacks ---
+
 func _ready() -> void:
 	default_zoom = $Camera2D.zoom
 	global.player = self
