@@ -1,85 +1,80 @@
 extends Node2D
 class_name LightManager
 
-@export var tile_layer : TileMapLayer
-@export var tile_size : int = 64
+@export var tile_layer: TileMapLayer
+@export var subdivisions: int = 2  # Number of subdivisions for each tile
+@export var default_light: Color
+@export var darkness: float = 0.75
+@export var light_radius: int = 2
 
-@export var darkness : float = 0.75
-@export var min_light_radius : int = 2
-@export var max_light_radius: int = 6
-
-# Holds light levels
-var shadow_data : Dictionary
-
-var current_player_pos : Vector2 = Vector2.ZERO
-
+# Dictionary to hold light levels
+var shadow_data: Dictionary = {}
+var light_data: Array[TileLightData] = []
+var previous_position: Vector2i = Vector2i.ZERO  # To track previous player position
 func _ready() -> void:
-	set_physics_process(false)
-	# not sure why but the container needs to be offset for the tiles to be aligned.
-	generate_shadow_data()
-	await get_tree().create_timer(0.1).timeout
-	global.player.moved.connect(update_light_map)
-	update_light_map(Vector2i.ZERO)
-	set_physics_process(true)
+	# Initialize shadow data for used tiles with subdivisions
+	var light_array: Array[Color] = []
+	light_array.resize(pow(subdivisions, 2))
+	light_array.fill(default_light)
+	
+	for tile in tile_layer.get_used_cells():
+		shadow_data[tile] = TileLightData.new(tile, light_array.duplicate())
+	await get_tree().process_frame  # Pause to ensure all elements are ready
+	global.player.moved.connect(light_update)  # Connect player movement to light update
+	light_update(Vector2.ZERO)  # Initial light update
+
+func light_update(player_position: Vector2i) -> void:
+	# Reset light data
+	for tile_light in light_data:
+		tile_light.subs.fill(default_light)
+	light_data.clear()
+
+	# Determine tiles within the light radius
+	for x in range(player_position.x - light_radius * 2, player_position.x + light_radius * 2 + 1):
+		for y in range(player_position.y - light_radius * 2, player_position.y + light_radius * 2 + 1):
+			var tile_pos = Vector2i(x, y)
+			if shadow_data.has(tile_pos):
+				var tile_light_data = shadow_data[tile_pos]
+
+				var it: int = 0
+				for j in range(-subdivisions+1, subdivisions, 2):
+					for k in range(-subdivisions+1, subdivisions, 2):
+						# Sub-position offset within the tile based on subdivisions
+						var sub_pos: Vector2 = Vector2(tile_pos) + Vector2(j, k) / float(pow(subdivisions, 2))
+						
+						# Calculate distance to player position
+						var distance = max(1.0, sub_pos.distance_to(player_position))
+						
+						# Calculate intensity using a quadratic falloff
+						var light_intensity = max(0.0, 1.0 - distance / light_radius)
+						
+						# Assign intensity to the specific sub-position
+						tile_light_data.subs[it] = Color(1, 1, 1, light_intensity)
+						it += 1
+				light_data.append(tile_light_data)
+	queue_redraw()
 
 func _draw() -> void:
-	for shadow in shadow_data:
-		var offset_pos : Vector2 = shadow * tile_size
-		var size : Vector2 = Vector2(tile_size,tile_size)
-		var colour : Color = Color(0,0,0,shadow_data[shadow])
+	var rect = tile_layer.get_used_rect()
+	draw_rect(Rect2(rect.position * 128, rect.size * 128), default_light)
+	for tile_light in light_data:
+		var tile_pos = Vector2(tile_light.position * tile_layer.tile_set.tile_size)  # Convert tile position to screen position
+		var tile_size = Vector2(tile_layer.tile_set.tile_size) / float(subdivisions)  # Adjust size for subdivisions
 		
-		draw_rect(Rect2(offset_pos,size),colour)
+		# Draw each subdivision within the tile
+		var it: int = 0
+		for x in range(subdivisions):
+			for y in range(subdivisions):
+				var sub_pos = tile_pos + Vector2(x, y) * tile_size
+				var color = tile_light.subs[it]
+				it += 1
+				draw_rect(Rect2(sub_pos, tile_size), color)
 
-func generate_shadow_data() -> void:
-	for tile in tile_layer.get_used_cells():
-		shadow_data[tile] = darkness
-	
-func tile_exists(tile_pos : Vector2i) -> bool:
-	var check : bool = shadow_data.has(tile_pos)
-	return check
+# Define a class to store tile light data
+class TileLightData:
+	var position: Vector2i
+	var subs: Array[Color]
 
-func set_tile_light_level(tile_position : Vector2i,light_level : float = darkness) -> void:
-	if light_level > darkness:
-		light_level = darkness
-	# Update the light level dict
-	shadow_data[tile_position] = light_level
-	# then apply the update to the scene
-
-# Function for setting light level to black
-func clear_light_map() -> void:
-	for tile in shadow_data:
-		shadow_data[tile] = darkness
-	queue_redraw()
-
-func update_light_map(_n:Vector2i) -> void:
-	clear_light_map()
-	
-	var player_pos : Vector2i = tile_layer.local_to_map(global.player.position)
-	
-	for x in range(player_pos.x - max_light_radius, player_pos.x + max_light_radius + 1):
-		for y in range(player_pos.y - max_light_radius, player_pos.y + max_light_radius + 1):
-			var tile_position = Vector2i(x, y)
-			
-			# if the tile position is not valid we continue
-			if not tile_exists(tile_position): continue
-			
-			# check the distance of the tile to create a fall off value
-			var distance : float = player_pos.distance_to(tile_position)
-			
-			if distance <= max_light_radius:
-				# This needs to be replaced with checking boundaries function so we cant see
-				# past walls.
-				if true:
-					var light_level : float = calculate_light_level(distance,min_light_radius,max_light_radius)
-					set_tile_light_level(tile_position,light_level)
-				else:
-					set_tile_light_level(tile_position)
-	
-	queue_redraw()
-	
-func calculate_light_level(distance: float, min_distance: float, max_distance: float) -> float:
-	var clamped_distance = clamp(distance, min_distance, max_distance)
-	
-	var scaled = (clamped_distance - min_distance) / (max_distance - min_distance)
-	
-	return scaled
+	func _init(_position: Vector2i, _subs: Array[Color]):
+		position = _position
+		subs = _subs
