@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://cjxiwvvqhuh0q"]
+[gd_scene load_steps=11 format=4 uid="uid://cjxiwvvqhuh0q"]
 
 [ext_resource type="PackedScene" uid="uid://dkkdcx534ran6" path="res://Scenes/Player/Player.tscn" id="1_1vo14"]
 [ext_resource type="Texture2D" uid="uid://b05hj6ognkfqi" path="res://Assets/icon.svg" id="2_2nh4u"]
 [ext_resource type="PackedScene" uid="uid://didh1mtde07hl" path="res://Scenes/door.tscn" id="3_yy6hg"]
 [ext_resource type="Script" path="res://Scenes/Player/MapGenerator.gd" id="4_78f4u"]
 [ext_resource type="Script" path="res://Scripts/LightManager/LightManager.gd" id="5_ciab1"]
+[ext_resource type="Shader" path="res://Scenes/Player/World.gdshader" id="6_wmsts"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4fw4l"]
 texture = ExtResource("2_2nh4u")
@@ -28,6 +29,11 @@ custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_4fw4l")
 sources/1 = SubResource("TileSetScenesCollectionSource_4su1h")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1j4cd"]
+shader = ExtResource("6_wmsts")
+shader_parameter/node_size = Vector2(1, 1)
+shader_parameter/node_position = null
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Floor" type="TileMapLayer" parent="."]
@@ -40,6 +46,7 @@ tile_map_data = PackedByteArray("AAABAAAAAQAAAAAAAQAGAAIAAQAAAAAAAgAKAAEAAQAAAAA
 tile_set = SubResource("TileSet_4raql")
 
 [node name="LightManager" type="Node2D" parent="." node_paths=PackedStringArray("tile_layer")]
+material = SubResource("ShaderMaterial_1j4cd")
 script = ExtResource("5_ciab1")
 tile_layer = NodePath("../Floor")
 cell_size = 42

@@ -19,6 +19,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 
 [node name="Hud" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="Hud"]
 anchors_preset = 15
