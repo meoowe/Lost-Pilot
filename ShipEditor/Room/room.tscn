@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0m6m2n1i0ujb"]
+
+[ext_resource type="Script" path="res://ShipEditor/Room/room.gd" id="1_gvesm"]
+[ext_resource type="Texture2D" uid="uid://deig3dogj8rr1" path="res://assets/SpaceShip/Room/Floor(64x64).png" id="1_nufl0"]
+[ext_resource type="Texture2D" uid="uid://dax2hu446q7tt" path="res://assets/SpaceShip/Room/NorthWall(64x64).png" id="3_4gbbj"]
+[ext_resource type="Texture2D" uid="uid://dpfedlow2wex3" path="res://assets/SpaceShip/Room/EastWall(64x64).png" id="4_wyhlk"]
+[ext_resource type="Texture2D" uid="uid://bkyrl0r44me75" path="res://assets/SpaceShip/Room/SouthWall(64x64).png" id="5_0wlxo"]
+[ext_resource type="Texture2D" uid="uid://bp2nb7568qr2m" path="res://assets/SpaceShip/Room/WestWall(64x64).png" id="6_mtpbm"]
+
+[node name="Room" type="Node2D" node_paths=PackedStringArray("north", "east", "south", "west")]
+script = ExtResource("1_gvesm")
+north = NodePath("NorthWall(64x64)")
+east = NodePath("EastWall(64x64)")
+south = NodePath("SouthWall(64x64)")
+west = NodePath("WestWall(64x64)")
+
+[node name="Floor" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_nufl0")
+
+[node name="NorthWall(64x64)" type="Sprite2D" parent="."]
+texture = ExtResource("3_4gbbj")
+
+[node name="EastWall(64x64)" type="Sprite2D" parent="."]
+texture = ExtResource("4_wyhlk")
+
+[node name="SouthWall(64x64)" type="Sprite2D" parent="."]
+texture = ExtResource("5_0wlxo")
+
+[node name="WestWall(64x64)" type="Sprite2D" parent="."]
+texture = ExtResource("6_mtpbm")
