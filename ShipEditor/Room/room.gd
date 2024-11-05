@@ -15,7 +15,7 @@ func _ready() -> void:
 	# Register its self because its the only way to get neighbours.
 	GameManager.ship_editor.register_block(data.local_to_map(global_position),self)
 	
-	print(data.local_to_map(global_position))
+	#print(data.local_to_map(global_position))
 
 # Updates the walls in the room
 func set_walls() -> void:
@@ -36,7 +36,7 @@ func check_room_exists(data : TileMapLayer) -> void:
 	var tile_position : Vector2i = data.local_to_map(global_position)
 	var neighbors : Array[Vector2i] = data.get_surrounding_cells(tile_position)
 	
-	print("Tile pos (%s)" % tile_position)
+	#print("Tile pos (%s)" % tile_position)
 
 	# Need to check each direction
 	for neighbour in neighbors:

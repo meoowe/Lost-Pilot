@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://hiypia7hnuka"]
+[gd_scene load_steps=9 format=4 uid="uid://hiypia7hnuka"]
 
 [ext_resource type="PackedScene" uid="uid://d0m6m2n1i0ujb" path="res://ShipEditor/Room/room.tscn" id="1_7c7ak"]
 [ext_resource type="Script" path="res://ShipEditor/ship_editor.gd" id="1_oyp23"]
+[ext_resource type="Script" path="res://Scripts/ShipEditorCamera/ship_editor_camera.gd" id="3_3gi3q"]
 [ext_resource type="PackedScene" uid="uid://ddmx7be11okh3" path="res://Scenes/Hud/hud.tscn" id="3_wrlpd"]
 [ext_resource type="Texture2D" uid="uid://jc3ju62qx454" path="res://assets/Hud/TransparentPanel64x64.png" id="4_gqrhf"]
 [ext_resource type="Texture2D" uid="uid://b05hj6ognkfqi" path="res://icon.svg" id="5_u6vbw"]
@@ -22,8 +23,9 @@ layer = NodePath("TileMapLayer")
 tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAgD/////AAAAAAAAAgD///7/AAAAAAAAAgAAAP7/AAAAAAAAAgABAP7/AAAAAAAAAgABAP//AAAAAAAAAgABAAAAAAAAAAAAAgAAAAAAAAAAAAAAAgD//wAAAAAAAAAAAgACAP//AAAAAAAAAgADAP//AAAAAAAAAgAEAP//AAAAAAAAAgAFAP//AAAAAAAAAgAFAP7/AAAAAAAAAgAFAP3/AAAAAAAAAgAEAP3/AAAAAAAAAgAEAPz/AAAAAAAAAgADAPz/AAAAAAAAAgACAPz/AAAAAAAAAgABAPz/AAAAAAAAAgAAAPz/AAAAAAAAAgAAAP3/AAAAAAAAAgAAAAEAAAAAAAAAAgAAAAIAAAAAAAAAAgAAAAMAAAAAAAAAAgD//wMAAAAAAAAAAgD+/wMAAAAAAAAAAgD9/wMAAAAAAAAAAgD9/wIAAAAAAAAAAgD9/wEAAAAAAAAAAgD9/wAAAAAAAAAAAgD9////AAAAAAAAAgD+////AAAAAAAAAgACAAIAAAAAAAAAAgADAAIAAAAAAAAAAgAEAAIAAAAAAAAAAgADAAEAAAAAAAAAAgADAAAAAAAAAAAAAgD8/wAAAAAAAAAAAgD7/wAAAAAAAAAAAgD6/wAAAAAAAAAAAgD6////AAAAAAAAAgD6//7/AAAAAAAAAgD6//3/AAAAAAAAAgD6//z/AAAAAAAAAgD7//z/AAAAAAAAAgD7//3/AAAAAAAAAgD5//3/AAAAAAAAAgD5//z/AAAAAAAAAgD8//z/AAAAAAAAAgD8//3/AAAAAAAAAgD7//v/AAAAAAAAAgD6//v/AAAAAAAAAgD5//v/AAAAAAAAAgD4//z/AAAAAAAAAgD4//3/AAAAAAAAAgA=")
 tile_set = SubResource("TileSet_xbfal")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="ShipEditorCamera" type="Camera2D" parent="."]
 zoom = Vector2(1.2, 1.2)
+script = ExtResource("3_3gi3q")
 
 [node name="Hud" parent="." instance=ExtResource("3_wrlpd")]
 
