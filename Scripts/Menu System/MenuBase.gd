@@ -1,4 +1,4 @@
-extends Control
+extends UserInterface
 class_name MenuBase
 
 var menu_manager : MenuSystem

@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://b2qsse7qo1d8y" path="res://Assets/Gugi-Regular.ttf" id="2_2kj8a"]
 [ext_resource type="Texture2D" uid="uid://cl3v6nwopeykd" path="res://Assets/UI/TransparentGrayPanel64x64.png" id="3_7e11j"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("start_focus")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -14,6 +14,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_042l1")
 is_paused = true
+start_focus = NodePath("MarginContainer2/NinePatchRect/Back")
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

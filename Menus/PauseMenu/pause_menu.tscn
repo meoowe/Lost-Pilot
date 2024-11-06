@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cl3v6nwopeykd" path="res://Assets/UI/TransparentGrayPanel64x64.png" id="2_likm6"]
 [ext_resource type="FontFile" uid="uid://b2qsse7qo1d8y" path="res://Assets/Gugi-Regular.ttf" id="3_fj372"]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("start_focus")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -14,6 +14,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cxa5c")
 is_paused = true
+start_focus = NodePath("SettingsBox/MarginContainer/VBoxContainer/Resume")
+metadata/_edit_use_anchors_ = true
 
 [node name="SettingsBox" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(140, 64)

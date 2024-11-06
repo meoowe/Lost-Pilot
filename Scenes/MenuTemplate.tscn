@@ -7,3 +7,4 @@ process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_epc1c")
+metadata/_edit_use_anchors_ = true

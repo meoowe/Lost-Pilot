@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cl3v6nwopeykd" path="res://Assets/UI/TransparentGrayPanel64x64.png" id="3_n8cfu"]
 [ext_resource type="Texture2D" uid="uid://b5m6rbp0pckc7" path="res://Assets/UI/GitHub_Logo.png" id="4_vm6jh"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("start_focus")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ipak")
-is_paused = null
+start_focus = NodePath("MarginContainer/NinePatchRect/VBoxContainer/Play")
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

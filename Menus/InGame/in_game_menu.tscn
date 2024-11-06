@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Menus/InGame/in_game_menu.gd" id="1_82e5c"]
 
-[node name="PlayMenu" type="Control"]
+[node name="InGameMenu" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -12,3 +12,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_82e5c")
+start_on = false
+metadata/_edit_use_anchors_ = true
