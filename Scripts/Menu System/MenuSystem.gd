@@ -5,7 +5,7 @@ class_name MenuSystem
 
 # Add values to this enum for add extra menus, also InGame menu is supposed to be a blank scene
 # Health bar, xp level labels should be its own canvas layer and not attached to the menu manager
-enum Keys {Play,MainMenu,Paused,Settings}
+enum Keys {InGame,MainMenu,Paused,Settings,Credits}
 # Storing the menus in a dict using the menu keys as a way to index it.
 var menus : Dictionary = {}
 # Current menu is the actual scene
@@ -23,10 +23,11 @@ func _ready() -> void:
 	
 	set_up_menu_container()
 	
-	add_menu(Keys.Play,"res://Menus/Play/PlayMenu.tscn")
+	add_menu(Keys.InGame,"res://Menus/InGame/in_game_menu.tscn")
 	add_menu(Keys.Paused,"res://Menus/PauseMenu/pause_menu.tscn")
 	add_menu(Keys.MainMenu,"res://Menus/MainMenu/main_menu.tscn")
-	add_menu(Keys.Settings,"res://Menus/Settings/Settings.tscn")
+	add_menu(Keys.Settings,"res://Menus/Settings/settings_menu.tscn")
+	add_menu(Keys.Credits,"res://Menus/CreditsMenu/credits_menu.tscn")
 	
 	load_menu(Keys.MainMenu)
 

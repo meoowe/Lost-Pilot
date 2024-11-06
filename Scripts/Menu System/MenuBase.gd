@@ -6,3 +6,5 @@ var menu_manager : MenuSystem
 
 func set_menu_manager(_menu_manager : MenuSystem) -> void:
 	menu_manager = _menu_manager
+
+# Duplicate this scene and create a new script that you extend from this.

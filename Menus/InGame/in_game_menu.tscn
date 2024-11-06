@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://2nq4ts7s3ojx"]
 
-[ext_resource type="Script" path="res://Menus/Play/play_menu.gd" id="1_q3h8i"]
+[ext_resource type="Script" path="res://Menus/InGame/in_game_menu.gd" id="1_82e5c"]
 
 [node name="PlayMenu" type="Control"]
 process_mode = 3
@@ -11,4 +11,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_q3h8i")
+script = ExtResource("1_82e5c")
