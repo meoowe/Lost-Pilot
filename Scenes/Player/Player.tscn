@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkkdcx534ran6"]
+[gd_scene load_steps=3 format=3 uid="uid://dkkdcx534ran6"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_4kof2"]
 [ext_resource type="Texture2D" uid="uid://b05hj6ognkfqi" path="res://Assets/icon.svg" id="2_pi6i1"]
-[ext_resource type="Texture2D" uid="uid://cs8681uo0d3j5" path="res://Assets/UI/TransparentPanel64x64.png" id="3_64k8r"]
 
 [node name="Player" type="Node2D"]
 z_index = 1
@@ -14,36 +13,5 @@ speed = 400.0
 texture = ExtResource("2_pi6i1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
-
-[node name="Hud" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="Hud"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Control" type="Control" parent="Hud/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Hud/MarginContainer/Control"]
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 128.0
-texture = ExtResource("3_64k8r")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
