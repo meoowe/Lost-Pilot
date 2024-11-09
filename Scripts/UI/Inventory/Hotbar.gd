@@ -1,14 +1,15 @@
 extends UserInterface
 
-const SlotClass = preload("res://Scripts/UI/Inventory/Slot.gd")
-@onready var hotbar = $HotbarSlots 
-@onready var slots = $HotbarSlots.get_children()
-@onready var active_item_label = $ActiveItemLabel
-@onready var tooltip = $ActiveItemLabel/Tooltip
+const SlotClass = preload("res://Scripts/UI/Inventory/Slot.gd") # Preload the Slot script
+@onready var hotbar = $HotbarSlots # Reference to the HotbarSlots node
+@onready var slots = $HotbarSlots.get_children() #List of all child nodes of HotbarSlots
+@onready var active_item_label = $ActiveItemLabel # Reference to the ActiveItemLabel node
+@onready var tooltip = $ActiveItemLabel/Tooltip # Reference to the Tooltip node
 var t
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Sets up the Hotbar
 	PlayerInventory.active_item_updated.connect(self.update_active_item_label)
 	for i in range(slots.size()):
 		slots[i].gui_input.connect(slot_gui_input.bind(slots[i]))
@@ -19,6 +20,7 @@ func _ready() -> void:
 	update_active_item_label()
 	
 func tooltip_change():
+	# Toggle the visibility of the tooltip
 	tooltip.visible = !tooltip.visible
 
 func update_active_item_label():
@@ -32,6 +34,18 @@ func update_active_item_label():
 		tips[0].text = JsonData.item_data[active_item_label.text]["ItemCategory"]
 		tips[1].text = slots[PlayerInventory.active_item_slot].item.item_name
 		tips[2].text = JsonData.item_data[active_item_label.text]["Description"]
+		if JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"] == "Consumable":
+			tips[3].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddHealth"]) + " Health"
+			tips[4].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddEnergy"]) + " Energy"
+		elif JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"] == "Tool":
+			tips[3].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddRepair"]) + " Repair"
+			tips[4].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddEnergy"]) + " Energy"
+		elif JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"] == "Weapon":
+			tips[3].text = "Damage: " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemAttack"])
+			tips[4].text = "Reload: " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemReload"]) + "s"
+		else:
+			tips[3].text = ""
+			tips[4].text = ""
 	else:
 		active_item_label.text = "Empty Slot"
 		tooltip.visible = false

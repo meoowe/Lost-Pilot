@@ -8,9 +8,15 @@ func _input(event: InputEvent) -> void:
 		$Inventory.visible = !$Inventory.visible
 		$Hotbar.tooltip_change()
 	if event.is_action_pressed("scroll_up"):
-		PlayerInventory.active_item_scroll_up()
+		if $Inventory.visible:
+			PlayerInventory.active_inventory_item_scroll_up()
+		else:
+			PlayerInventory.active_item_scroll_up()
 	elif event.is_action_pressed("scroll_down"):
-		PlayerInventory.active_item_scroll_down()
+		if $Inventory.visible:
+			PlayerInventory.active_inventory_item_scroll_down()
+		else:
+			PlayerInventory.active_item_scroll_down()
 	if event.is_action_pressed("hotkey1"):
 		PlayerInventory.change_active_item_slot(0)
 	if event.is_action_pressed("hotkey2"):

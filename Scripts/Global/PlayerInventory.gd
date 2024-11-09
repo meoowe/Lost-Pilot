@@ -16,6 +16,7 @@ var inventory = {
 	4 : ["Med Kit", 10],
 	5 : ["Bandage", 30],
 	6 : ["Repair Kit", 5],
+	7 : ["Food 1", 12],
 }
 
 var hotbar = {
@@ -101,6 +102,17 @@ func change_active_item_slot(active_slot):
 	
 func change_inventory_active_item_slot(active_slot):
 	active_item_slot = active_slot
+	emit_signal("inventory_active_item_updated")
+	
+func active_inventory_item_scroll_up():
+	active_item_slot = (active_item_slot + 1) % NUM_INVENTORY_SLOTS
+	emit_signal("inventory_active_item_updated")
+	
+func active_inventory_item_scroll_down():
+	if active_item_slot == 0:
+		active_item_slot = NUM_INVENTORY_SLOTS - 1
+	else:
+		active_item_slot -= 1
 	emit_signal("inventory_active_item_updated")
 
 func active_item_scroll_up():

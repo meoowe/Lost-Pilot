@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0q2or55chhli"]
+[gd_scene load_steps=17 format=3 uid="uid://d0q2or55chhli"]
 
 [ext_resource type="Texture2D" uid="uid://d28ftxj7es4k4" path="res://Assets/sprites/Backgrounds/inventory_background.png" id="1_s11cb"]
 [ext_resource type="Script" path="res://Scripts/UI/Inventory/Inventory.gd" id="1_yuqda"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://btnc4w1t360qg" path="res://Assets/sprites/objects/Item_icons/Boot_Overlay.png" id="7_cvc2h"]
 [ext_resource type="FontFile" uid="uid://dp5qg7jirac5b" path="res://Fonts/m5x7.ttf" id="10_1y7jr"]
 [ext_resource type="Texture2D" uid="uid://bf0w8h272iv3n" path="res://Assets/sprites/Backgrounds/item_slot_default_background.png" id="10_53tjq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u27p8"]
+texture = ExtResource("6_kv6rx")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4wq3d"]
 texture = ExtResource("1_s11cb")
@@ -39,51 +42,82 @@ anchors_preset = 0
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_yuqda")
 
-[node name="Tooltip" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 459.6
-offset_top = 152.4
-offset_right = 582.6
-offset_bottom = 238.4
-texture = ExtResource("6_kv6rx")
+[node name="Tooltip" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(120, 109)
+layout_mode = 2
+offset_left = 463.0
+offset_top = 135.0
+offset_right = 583.0
+offset_bottom = 244.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_u27p8")
 
-[node name="Item Category" type="Label" parent="Tooltip"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Tooltip"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Item Category" type="Label" parent="Tooltip/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-offset_left = 2.6
-offset_top = -0.400009
-offset_right = 90.6
-offset_bottom = 12.6
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("10_1y7jr")
 theme_override_font_sizes/font_size = 16
 text = "Item Category"
 
-[node name="Item Name" type="Label" parent="Tooltip"]
-texture_filter = 1
+[node name="Item Name" type="Label" parent="Tooltip/VBoxContainer"]
+texture_filter = 3
 layout_mode = 2
-offset_left = 3.0
-offset_top = 12.0
-offset_right = 91.0
-offset_bottom = 25.0
-scale = Vector2(1.5, 1.5)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("10_1y7jr")
-theme_override_font_sizes/font_size = 16
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("5_ptnxp")
+theme_override_font_sizes/font_size = 10
 text = "Item Name"
 
-[node name="Item Description" type="Label" parent="Tooltip"]
+[node name="Item Description" type="RichTextLabel" parent="Tooltip/VBoxContainer"]
 texture_filter = 3
-custom_minimum_size = Vector2(88, 13)
+custom_minimum_size = Vector2(100, 36)
 layout_mode = 2
-offset_left = 3.0
-offset_top = 35.0
-offset_right = 122.0
-offset_bottom = 48.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+tooltip_text = "qwerty"
+mouse_default_cursor_shape = 6
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("10_1y7jr")
+theme_override_font_sizes/normal_font_size = 16
+text = "Item Description"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tooltip/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Item Stat1" type="Label" parent="Tooltip/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+custom_minimum_size = Vector2(40, 13)
+layout_mode = 2
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("10_1y7jr")
-text = "Item Description"
 autowrap_mode = 2
+
+[node name="Item Stat2" type="Label" parent="Tooltip/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+custom_minimum_size = Vector2(40, 13)
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_1y7jr")
+autowrap_mode = 2
+
+[node name="Item Description2" type="Label" parent="Tooltip/VBoxContainer"]
+texture_filter = 3
+custom_minimum_size = Vector2(88, 10)
+layout_mode = 2
+mouse_default_cursor_shape = 6
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("10_1y7jr")
+autowrap_mode = 2
+max_lines_visible = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 0

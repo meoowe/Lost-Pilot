@@ -34,10 +34,23 @@ func update_active_item_label():
 		#return
 	if slots[PlayerInventory.active_item_slot].item != null:
 		tooltip.visible = true
-		var tips = tooltip.get_children()
-		tips[0].text = JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"]
-		tips[1].text = slots[PlayerInventory.active_item_slot].item.item_name
-		tips[2].text = JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["Description"]
+		var info_spots = tooltip.get_child(0).get_children()
+		var stat_spots = tooltip.get_child(0).get_child(3).get_children()
+		info_spots[0].text = JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"]
+		info_spots[1].text = slots[PlayerInventory.active_item_slot].item.item_name
+		info_spots[2].text = JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["Description"]
+		if JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"] == "Consumable":
+			stat_spots[0].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddHealth"]) + " Health"
+			stat_spots[1].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddEnergy"]) + " Energy"
+		elif JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"] == "Tool":
+			stat_spots[0].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddRepair"]) + " Repair"
+			stat_spots[1].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddEnergy"]) + " Energy"
+		elif JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"] == "Weapon":
+			stat_spots[0].text = "Damage: " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemAttack"])
+			stat_spots[1].text = "Reload: " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemReload"]) + "s"
+		else:
+			stat_spots[0].text = ""
+			stat_spots[1].text = ""
 	else:
 		tooltip.visible = false
 		
