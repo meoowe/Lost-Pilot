@@ -55,11 +55,14 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_u27p8")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 0
 theme_override_constants/separation = 10
 
 [node name="Item Category" type="Label" parent="Tooltip/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
+tooltip_text = "Item Category"
+mouse_filter = 0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("10_1y7jr")
 theme_override_font_sizes/font_size = 16
@@ -68,6 +71,8 @@ text = "Item Category"
 [node name="Item Name" type="Label" parent="Tooltip/VBoxContainer"]
 texture_filter = 3
 layout_mode = 2
+tooltip_text = "Item Name"
+mouse_filter = 0
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("5_ptnxp")
 theme_override_font_sizes/font_size = 10
@@ -79,14 +84,12 @@ custom_minimum_size = Vector2(100, 36)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-tooltip_text = "qwerty"
-mouse_default_cursor_shape = 6
+tooltip_text = "Item Description"
 theme_override_colors/table_border = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("10_1y7jr")
 theme_override_font_sizes/normal_font_size = 16
 text = "Item Description"
-fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Tooltip/VBoxContainer"]
 layout_mode = 2

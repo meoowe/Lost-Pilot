@@ -37,6 +37,7 @@ script = ExtResource("3_ntfse")
 [node name="HotbarSlot2" type="Panel" parent="HotbarSlots"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
+tooltip_text = "Slot"
 script = ExtResource("3_ntfse")
 
 [node name="HotbarSlot3" type="Panel" parent="HotbarSlots"]
