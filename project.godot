@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Lost Pilot"
-run/main_scene="res://Scenes/Player/World.tscn"
+run/main_scene="res://Scenes/Main/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://Assets/icon.svg"
 global="*res://Scripts/Global/Global.gd"
 JsonData="*res://Scripts/Global/JSONData.gd"
 PlayerInventory="*res://Scripts/Global/PlayerInventory.gd"
+GameManager="*res://Scripts/Global/GameManager.gd"
 
 [display]
 
@@ -35,6 +36,10 @@ project/assembly_name="Godot Community Project 1"
 script/templates_search_path="res://Scripts/Templates"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[global_group]
+
+Info_Slots="Spots for Inventory Information"
 
 [gui]
 
