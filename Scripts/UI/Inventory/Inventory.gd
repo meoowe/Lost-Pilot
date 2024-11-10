@@ -34,23 +34,22 @@ func update_active_item_label():
 		#return
 	if slots[PlayerInventory.active_item_slot].item != null:
 		tooltip.visible = true
-		var info_spots = tooltip.get_child(0).get_children()
-		var stat_spots = tooltip.get_child(0).get_child(3).get_children()
-		info_spots[0].text = JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"]
-		info_spots[1].text = slots[PlayerInventory.active_item_slot].item.item_name
-		info_spots[2].text = JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["Description"]
+		var info_slots = get_tree().get_nodes_in_group("Info_Slots")
+		info_slots[0].text = JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"]
+		info_slots[1].text = slots[PlayerInventory.active_item_slot].item.item_name
+		info_slots[2].text = JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["Description"]
 		if JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"] == "Consumable":
-			stat_spots[0].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddHealth"]) + " Health"
-			stat_spots[1].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddEnergy"]) + " Energy"
+			info_slots[3].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddHealth"]) + " Health"
+			info_slots[4].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddEnergy"]) + " Energy"
 		elif JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"] == "Tool":
-			stat_spots[0].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddRepair"]) + " Repair"
-			stat_spots[1].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddEnergy"]) + " Energy"
+			info_slots[3].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddRepair"]) + " Repair"
+			info_slots[4].text = "Adds " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["AddEnergy"]) + " Energy"
 		elif JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemCategory"] == "Weapon":
-			stat_spots[0].text = "Damage: " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemAttack"])
-			stat_spots[1].text = "Reload: " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemReload"]) + "s"
+			info_slots[3].text = "Damage: " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemAttack"])
+			info_slots[4].text = "Reload: " + str(JsonData.item_data[slots[PlayerInventory.active_item_slot].item.item_name]["ItemReload"]) + "s"
 		else:
-			stat_spots[0].text = ""
-			stat_spots[1].text = ""
+			info_slots[3].text = ""
+			info_slots[4].text = ""
 	else:
 		tooltip.visible = false
 		
