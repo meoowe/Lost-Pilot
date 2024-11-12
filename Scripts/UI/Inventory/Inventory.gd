@@ -115,7 +115,7 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 				t.getFromSlot()
 				find_parent("UI").holding_item.global_position = get_global_mouse_position()
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if find_parent("UI").holding_item:
 		find_parent("UI").holding_item.global_position = get_global_mouse_position()
 
@@ -133,6 +133,3 @@ func able_to_put_into_slot(slot):
 	elif slot.slot_type == SlotClass.SlotType.WEAPONS:
 		return holding_item_category == "Weapon"
 	return true
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

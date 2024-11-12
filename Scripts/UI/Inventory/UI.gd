@@ -36,9 +36,11 @@ func _input(event: InputEvent) -> void:
 		
 
 func _ready() -> void:
-	pass # Replace with function body.
-
+	get_tree().node_added.connect(self.tree_changed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func tree_changed(new_node):
+	if new_node.name == "PauseMenu":
+		visible = false
+	if new_node.name == "InGameMenu":
+		visible = true
