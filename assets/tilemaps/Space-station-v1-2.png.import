@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl3v6nwopeykd"
-path="res://.godot/imported/TransparentGrayPanel64x64.png-e5d67df2ad09ddefa7be16ddcaa7ec11.ctex"
+uid="uid://b86uor46vus0p"
+path="res://.godot/imported/Space-station-v1-2.png-aa99d59b1f107f7e2ac127872a4be7a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/TransparentGrayPanel64x64.png"
-dest_files=["res://.godot/imported/TransparentGrayPanel64x64.png-e5d67df2ad09ddefa7be16ddcaa7ec11.ctex"]
+source_file="res://assets/tilemaps/Space-station-v1-2.png"
+dest_files=["res://.godot/imported/Space-station-v1-2.png-aa99d59b1f107f7e2ac127872a4be7a3.ctex"]
 
 [params]
 
