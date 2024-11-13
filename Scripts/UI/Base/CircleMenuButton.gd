@@ -14,7 +14,7 @@ class_name CircleMenuButton
 @export var color_line: Color = Color(1, 1, 1)         ## Line color for option dividers
 @export var color_highlight: Color = Color(1, 0.5, 0)  ## Highlight color for selected option
 
-@export_group("size", "size_")
+@export_group("Size", "size_")
 @export var size_outer_radius: int = 256               ## Radius for the outer circle
 @export var size_inner_radius: int = 64                ## Radius for the inner circle
 @export var size_line_width: int = 4                   ## Width of the dividing lines

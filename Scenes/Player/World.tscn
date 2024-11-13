@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=4 uid="uid://cjxiwvvqhuh0q"]
+[gd_scene load_steps=12 format=4 uid="uid://cjxiwvvqhuh0q"]
 
 [ext_resource type="PackedScene" uid="uid://dkkdcx534ran6" path="res://Scenes/Player/Player.tscn" id="1_1vo14"]
 [ext_resource type="Texture2D" uid="uid://b05hj6ognkfqi" path="res://Assets/icon.svg" id="2_2nh4u"]
 [ext_resource type="PackedScene" uid="uid://didh1mtde07hl" path="res://Scenes/door.tscn" id="3_yy6hg"]
 [ext_resource type="Script" path="res://Scenes/Player/MapGenerator.gd" id="4_78f4u"]
 [ext_resource type="Script" path="res://Scripts/UI/Base/UserInterface.gd" id="5_lqwlq"]
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/UI.gd" id="6_1ncu8"]
+[ext_resource type="PackedScene" uid="uid://d0q2or55chhli" path="res://Scenes/Inventory/Inventory.tscn" id="7_21gl4"]
+[ext_resource type="PackedScene" uid="uid://h6nnvk0iq3jt" path="res://Scenes/Inventory/Hotbar.tscn" id="8_6q22s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4fw4l"]
 texture = ExtResource("2_2nh4u")
@@ -48,3 +51,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_lqwlq")
 start_on = false
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("6_1ncu8")
+
+[node name="Hotbar" parent="UI" instance=ExtResource("8_6q22s")]
+
+[node name="Inventory" parent="UI" instance=ExtResource("7_21gl4")]
+visible = false
+offset_left = -828.0
+offset_top = -334.0
+offset_right = -828.0
+offset_bottom = -334.0
+scale = Vector2(3.5, 3.5)
