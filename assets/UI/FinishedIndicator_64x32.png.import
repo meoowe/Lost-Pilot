@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs8681uo0d3j5"
-path="res://.godot/imported/TransparentPanel64x64.png-48f0781fd1382d9564a85905a113f5f3.ctex"
+uid="uid://dsfs21gosb436"
+path="res://.godot/imported/FinishedIndicator_64x32.png-f1547bdf2cf744c629935cc9a6c98619.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/TransparentPanel64x64.png"
-dest_files=["res://.godot/imported/TransparentPanel64x64.png-48f0781fd1382d9564a85905a113f5f3.ctex"]
+source_file="res://assets/UI/FinishedIndicator_64x32.png"
+dest_files=["res://.godot/imported/FinishedIndicator_64x32.png-f1547bdf2cf744c629935cc9a6c98619.ctex"]
 
 [params]
 

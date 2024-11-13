@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsfs21gosb436"
-path="res://.godot/imported/FinishedIndicator_64x32.png-0f633ad71d5e280842488cfa4af293af.ctex"
+uid="uid://b1y70ybs2m3ad"
+path="res://.godot/imported/DoorSpriteSheet.png-ab7b651546d898b8071db845d70f68d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/FinishedIndicator_64x32.png"
-dest_files=["res://.godot/imported/FinishedIndicator_64x32.png-0f633ad71d5e280842488cfa4af293af.ctex"]
+source_file="res://assets/DoorSpriteSheet.png"
+dest_files=["res://.godot/imported/DoorSpriteSheet.png-ab7b651546d898b8071db845d70f68d9.ctex"]
 
 [params]
 

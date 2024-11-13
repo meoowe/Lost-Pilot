@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5m6rbp0pckc7"
-path="res://.godot/imported/GitHub_Logo.png-21de23d52dd50d89a0944b4b3a5678cc.ctex"
+uid="uid://myntqljcecwk"
+path="res://.godot/imported/DoorSpriteSelected.png-4036ea6a4ae2cf5f6aea68dc36f85e5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/GitHub_Logo.png"
-dest_files=["res://.godot/imported/GitHub_Logo.png-21de23d52dd50d89a0944b4b3a5678cc.ctex"]
+source_file="res://assets/DoorSpriteSelected.png"
+dest_files=["res://.godot/imported/DoorSpriteSelected.png-4036ea6a4ae2cf5f6aea68dc36f85e5f.ctex"]
 
 [params]
 

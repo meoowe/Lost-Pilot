@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7wr06srojx2c"
-path="res://.godot/imported/GrayPanel64x64.png-0838dff68acc368ccc7aa5f06c54a71e.ctex"
+uid="uid://cy3mthclw6bj6"
+path="res://.godot/imported/Selected.png-4beed69c2066b46bf25a06574757274c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/GrayPanel64x64.png"
-dest_files=["res://.godot/imported/GrayPanel64x64.png-0838dff68acc368ccc7aa5f06c54a71e.ctex"]
+source_file="res://assets/UI/Selected.png"
+dest_files=["res://.godot/imported/Selected.png-4beed69c2066b46bf25a06574757274c.ctex"]
 
 [params]
 
