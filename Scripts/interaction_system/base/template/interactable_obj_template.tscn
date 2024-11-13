@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccm6yuokogjdq"]
 
-[ext_resource type="Script" path="res://Scripts/Templates/InteractableObject/InteractableObjectTemplate.gd" id="1_vtrhh"]
-[ext_resource type="Texture2D" uid="uid://b05hj6ognkfqi" path="res://Assets/icon.svg" id="2_tfywc"]
+[ext_resource type="Script" path="res://scripts/templates/interactable_object/interactable_object_template.gd" id="1_vtrhh"]
+[ext_resource type="Texture2D" uid="uid://b05hj6ognkfqi" path="res://assets/icon.svg" id="2_tfywc"]
 
 [node name="ObjTemplate" type="Node2D" node_paths=PackedStringArray("gui_button")]
 script = ExtResource("1_vtrhh")

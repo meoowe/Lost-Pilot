@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://oidd5uwptfyx"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Base/UserInterface.gd" id="1_ksjhh"]
+[ext_resource type="Script" path="res://scripts/ui/base/user_interface.gd" id="1_ksjhh"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("start_focus")]
 layout_mode = 3
