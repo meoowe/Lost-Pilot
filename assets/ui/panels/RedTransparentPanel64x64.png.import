@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy3mthclw6bj6"
-path="res://.godot/imported/Selected.png-2bd2791723639aa83e39831261df74c4.ctex"
+uid="uid://1bramb5go6aa"
+path="res://.godot/imported/RedTransparentPanel64x64.png-d059a58964ab20e8d0b010338552d49d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/Selected.png"
-dest_files=["res://.godot/imported/Selected.png-2bd2791723639aa83e39831261df74c4.ctex"]
+source_file="res://assets/ui/panels/RedTransparentPanel64x64.png"
+dest_files=["res://.godot/imported/RedTransparentPanel64x64.png-d059a58964ab20e8d0b010338552d49d.ctex"]
 
 [params]
 

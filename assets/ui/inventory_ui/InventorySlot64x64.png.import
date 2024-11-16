@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://roiekk57t417"
-path="res://.godot/imported/Panel64x64.png-040fe28658ff5f9ae1eb9004347be14f.ctex"
+uid="uid://b4cl313lwqp7m"
+path="res://.godot/imported/InventorySlot64x64.png-2055782e0fe197d5c7c785a13a418801.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/Panel64x64.png"
-dest_files=["res://.godot/imported/Panel64x64.png-040fe28658ff5f9ae1eb9004347be14f.ctex"]
+source_file="res://assets/ui/inventory_ui/InventorySlot64x64.png"
+dest_files=["res://.godot/imported/InventorySlot64x64.png-2055782e0fe197d5c7c785a13a418801.ctex"]
 
 [params]
 

@@ -23,11 +23,11 @@ func _ready() -> void:
 	set_up_menu_container()
 	
 	## Adding all the menus we want the game to have in the ready func.
-	add_menu(Keys.InGame,"res://Scenes/Menus/in_game_menu.tscn")
-	add_menu(Keys.Paused,"res://Scenes/Menus/pause_menu.tscn")
-	add_menu(Keys.MainMenu,"res://Scenes/Menus/main_menu.tscn")
-	add_menu(Keys.Settings,"res://Scenes/Menus/settings_menu.tscn")
-	add_menu(Keys.Credits,"res://Scenes/Menus/credits_menu.tscn")
+	add_menu(Keys.InGame,"res://scenes/menus/in_game_menu.tscn")
+	add_menu(Keys.Paused,"res://scenes/menus/pause_menu.tscn")
+	add_menu(Keys.MainMenu,"res://scenes/menus/main_menu.tscn")
+	add_menu(Keys.Settings,"res://scenes/menus/settings_menu.tscn")
+	add_menu(Keys.Credits,"res://scenes/menus/credits_menu.tscn")
 	## When all the menus are setup we now need to load the first menu. 
 	load_menu(Keys.MainMenu)
 

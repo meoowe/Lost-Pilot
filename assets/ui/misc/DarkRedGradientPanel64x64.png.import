@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5m6rbp0pckc7"
-path="res://.godot/imported/GitHub_Logo.png-a58bedec0a30bfa3d060f66538d8b090.ctex"
+uid="uid://x5wgtcfwwoqf"
+path="res://.godot/imported/DarkRedGradientPanel64x64.png-474192bc5044fef91c464b92c21b8931.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/GitHub_Logo.png"
-dest_files=["res://.godot/imported/GitHub_Logo.png-a58bedec0a30bfa3d060f66538d8b090.ctex"]
+source_file="res://assets/ui/misc/DarkRedGradientPanel64x64.png"
+dest_files=["res://.godot/imported/DarkRedGradientPanel64x64.png-474192bc5044fef91c464b92c21b8931.ctex"]
 
 [params]
 
