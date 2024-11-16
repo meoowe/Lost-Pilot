@@ -15,7 +15,7 @@ var scene_container : Node2D
 
 func _ready() -> void:
 	create_container()
-	add_scene("res://Scenes/Player/World.tscn",Keys.SpaceStation)
+	add_scene("res://scenes/player/world.tscn",Keys.SpaceStation)
 
 # Add scenes to the scene dict.
 func add_scene(scene : String,key : Keys) -> void:
