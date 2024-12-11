@@ -66,7 +66,7 @@ func load_menu(key : Keys) -> void:
 func load_previous_menu() -> void:
 	## Delete the last menu in the previous menu array and load it
 	previous_menus.pop_back()
-	call_deferred("load_menu",previous_menus[-1])
+	load_menu(previous_menus[-1])
 
 ## Function for creating a container for the menus.
 func set_up_menu_container() -> void:
