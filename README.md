@@ -1,7 +1,7 @@
 # Lost Pilot
 
 > [!NOTE] 
-> Our first venture into community-created games. Currently in the planning stage, most PRs will not be merged outside of simple foundational code, as we're not sure where things are going. Thanks!
+> Our first venture into community-created games. Currently, in the planning stage, most PRs will not be merged outside of simple foundational code, as we're not sure where things are going. Thanks!
 > The game is currently in the early stages, some details are subject to change.
 
 ## Overview
