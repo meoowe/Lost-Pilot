@@ -1,8 +1,8 @@
 # Lost Pilot
 
-Note: Our first venture into community created games. Currently in the planning stage, most PRs will not be merged as of now outside of simple foundational code, as we're not sure where things are going quite yet. Thanks!
-
-Note: The game is currently in the early stages, some details are subject to change.
+> [!NOTE] 
+> Our first venture into community-created games. Currently in the planning stage, most PRs will not be merged outside of simple foundational code, as we're not sure where things are going. Thanks!
+> The game is currently in the early stages, some details are subject to change.
 
 ## Overview
 
@@ -13,7 +13,7 @@ Explore the hostile environments, facing off against aliens, robots, and other d
 Key Features:
 
 - Crew management with crew member attributes, perks, and an inventory system
-- Customizable ship editor, allowing you to upgrade engines, weapons,oxygen, and crew quarters
+- Customizable ship editor, allowing you to upgrade engines, weapons, oxygen, and crew quarters
 - Ship-to-ship combat, defending against pirates and unknown enemies
 Exploration of space stations with hackable doors and procedurally generated content
 - A wide range of enemies, from aliens to cyborgs, requiring diverse combat strategies
@@ -25,11 +25,11 @@ Exploration of space stations with hackable doors and procedurally generated con
 - [Planned Features](#planned-features)
 - [Development Roadmap](#development-roadmap)
 - [Contributing](#contributing)
+- [License](#license) 
 
 ### Getting Involved
 
-We welcome any one to join the community and get involved in this project. Whether you're an experienced game developer or new to Godot, there are many ways you can contribute. Check out the main page for more [Link](https://github.com/GodotCommunityGamesOrg).
-
+We welcome anyone to join the community and get involved in this project. Whether you're an experienced game developer or new to Godot, there are many ways you can contribute. Check out the repository's main page for more.
 ### Current Status
 
 The game is currently in the early stages of development. We've established the initial project structure and are actively exploring different game concepts and mechanics. The core development team is working to solidify the game's direction and start building the foundation.
@@ -38,7 +38,7 @@ The game is currently in the early stages of development. We've established the 
 
 At this time, we don't have a finalized list of features, as we're still in the exploratory phase. However, some of the key areas we're considering include:
 
-- Unique game play mechanics
+- Unique gameplay mechanics
 - Engaging single-player mode.
 - Visually appealing art style and aesthetics.
 - Opportunities for community involvement and contributions.
